@@ -61,7 +61,7 @@ public class SamplePlayerManager : MonoBehaviour
         playerInputs[gamername] = playerInput;
 
         //Initialize the player controller
-        PlayerController playerController = player.GetComponent<PlayerController>();
+        SamplePlayer playerController = player.GetComponent<SamplePlayer>();
         playerController.Initialize(playerInput);
 
 

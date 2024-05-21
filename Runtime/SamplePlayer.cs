@@ -25,7 +25,7 @@ public class SamplePlayer : MonoBehaviour
     void Update()
     {
         move = moveAction.ReadValue<Vector2>();
-        dash = dashAction.isPressed();
+        dash = dashAction.IsPressed();
 
     }
 
