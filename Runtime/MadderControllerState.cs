@@ -4,7 +4,6 @@
     * This class defines the layout of the Madder Controller for the Unity Input System
     * This class should not be altered for the Madder controller
     */
-#if USE_INPUT_SYSTEM
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.InputSystem.Utilities;
 using UnityEngine.InputSystem.Layouts;
@@ -27,14 +26,3 @@ public struct MadderControllerState : IInputStateTypeInfo
     public bool plus;
     public FourCC format => Format;
 }
-#else
-[System.Serializable]
-public struct MadderControllerState
-{
-    public string name;
-    public Vector2 joystick;
-    public bool circle;
-    public bool triangle;
-    public bool plus;
-}
-#endif
