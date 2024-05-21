@@ -22,10 +22,11 @@ public class SamplePlayerManager : MonoBehaviour
     }
 
 
-    private void OnRegisterMadderController(string gamername)
+    private void OnRegisterMadderController(MadderPlayer madderPlayer)
     {
-        RegisterPlayer(gamername);
+        RegisterPlayer(madderPlayer.gamername);
     }
+
     public void RegisterPlayer(string gamername)
     {
         // Create a new player at a random location between (0,0,0) and (4,4,0)
