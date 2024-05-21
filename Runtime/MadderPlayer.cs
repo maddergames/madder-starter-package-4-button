@@ -6,10 +6,11 @@
  * This class contains a dictionary of MadderStat objects.
  * This class should not be altered.
  */
+using System.Collections.Generic;
 public class MadderPlayer
 {
     public string gamername;
 
-    public Dictionary<string, MadderStat<T>> stats;
+    public Dictionary<string, IMadderStat> stats;
 
 }

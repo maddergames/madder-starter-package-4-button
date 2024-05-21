@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
-
+using System.Runtime.InteropServices;
 
 /**
 * MadderManager
@@ -10,6 +10,7 @@ using UnityEngine.InputSystem;
 * This class interacts with the MadderControllerManager to create and manage Madder controllers.
 * This class should not be altered.
 */
+
 public class MadderManager : MonoBehaviour
 {
     public static MadderManager Instance { get; private set; }

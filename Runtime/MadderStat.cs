@@ -7,10 +7,17 @@
  * The value is the value of the stat and is REQUIRED.
  * This class may be added to or extended, but name and value must not be removed or altered.
  */
+using System;
+
+/*
+ * IMadderStat
+ * This interface is used to allow the MadderStat class to be used in the MadderPlayer class generically.
+ */
+public interface IMadderStat { }
 
 [AllowedType]
 [System.Serializable]
-public class MadderStat<T>
+public class MadderStat<T> : IMadderStat
 {
     static MadderStat()
     {
