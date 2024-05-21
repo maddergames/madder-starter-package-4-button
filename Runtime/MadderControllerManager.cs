@@ -1,7 +1,5 @@
 using UnityEngine;
-#if USE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
-#endif
 using System.Collections.Generic;
 
 /**
@@ -28,9 +26,7 @@ public class MadderControllerManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-#if USE_INPUT_SYSTEM
             InputSystem.RegisterLayout<MadderController>();
-#endif
 
         }
         else
@@ -49,9 +45,8 @@ public class MadderControllerManager : MonoBehaviour
      */
     public MadderController CreateController(string gamername)
     {
-#if USE_INPUT_SYSTEM
         var device = InputSystem.AddDevice<MadderController>();
-#endif
+
         controllers[gamername] = device;
         return device;
     }
@@ -79,9 +74,7 @@ public class MadderControllerManager : MonoBehaviour
     {
         if (controllers.TryGetValue(gamername, out var device))
         {
-#if USE_INPUT_SYSTEM
             InputSystem.RemoveDevice(device);
-#endif
             controllers.Remove(gamername);
         }
     }
@@ -93,12 +86,10 @@ public class MadderControllerManager : MonoBehaviour
      */
     private void OnDestroy()
     {
-#if USE_INPUT_SYSTEM
         foreach (var controller in controllers.Values)
         {
             InputSystem.RemoveDevice(controller);
         }
-#endif
         controllers.Clear();
     }
 }

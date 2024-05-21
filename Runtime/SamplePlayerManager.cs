@@ -44,7 +44,7 @@ public class SamplePlayerManager : MonoBehaviour
             Debug.Log("PlayerInput is null");
         }
 
-        //we must clone the inputActions to avoid sharing the same instance between players
+        //We must clone the inputActions to avoid sharing the same instance between players
         InputActionAsset clonedinputActions = Instantiate(inputActions);
         playerInput.actions = clonedinputActions;
 

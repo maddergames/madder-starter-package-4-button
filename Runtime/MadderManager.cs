@@ -1,8 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
-#if USE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
-#endif
+
 
 /**
 * MadderManager
@@ -116,9 +115,7 @@ public class MadderManager : MonoBehaviour
             Debug.Log("Controller not found.");
         }
         //Update the input device with the received data
-#if USE_INPUT_SYSTEM
         InputSystem.QueueStateEvent(controller, controllerState);
-#endif
 
         //Trigger events listening for OnUpdateMadderControllerState, for example to move a playerObject
         onUpdateMadderControllerState?.Invoke(controllerState.name, controllerState);
