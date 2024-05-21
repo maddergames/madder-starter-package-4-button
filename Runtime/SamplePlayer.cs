@@ -18,8 +18,11 @@ public class SamplePlayer : MonoBehaviour
 
     void Start()
     {
-        spriteRenderer = AddComponent<SpriteRenderer>();
-        spriteRenderer.sprite = Resources.Load<Sprite>("Sprites/SamplePlayer");
+        if (transform.parent != null)
+        {
+            spriteRenderer = transform.parent.gameObject.AddComponent<SpriteRenderer>();
+            spriteRenderer.sprite = Resources.Load<Sprite>("Sprites/SamplePlayer");
+        }
     }
 
     void Update()
@@ -39,7 +42,6 @@ public class SamplePlayer : MonoBehaviour
         this.playerInput = playerInput;
         moveAction = playerInput.actions["Move"];
         dashAction = playerInput.actions["Dash"];
-        dashAction.performed += ctx => Dash(ctx);
         //Enable the actions
         moveAction.Enable();
         dashAction.Enable();
