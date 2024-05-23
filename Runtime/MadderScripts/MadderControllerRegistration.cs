@@ -2,20 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using MadderGames;
 
-namespace MadderGames.Editor
+
+
+#if UNITY_EDITOR
+[UnityEditor.InitializeOnLoad]
+#endif
+
+public static class MadderControllerRegistration
 {
-    #if UNITY_EDITOR
-    [UnityEditor.InitializeOnLoad]
-    #endif
-
-    public static class MadderControllerRegistration
+    static MadderControllerRegistration()
     {
-        static MadderControllerRegistration()
-        {
-            // Register the MadderController layout with the InputSystem
-            InputSystem.RegisterLayout<MadderController>();
-        }
+        // Register the MadderController layout with the InputSystem
+        InputSystem.RegisterLayout<MadderController>();
     }
 }
+
