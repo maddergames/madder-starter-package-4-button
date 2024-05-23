@@ -10,42 +10,41 @@ using UnityEngine.InputSystem.Layouts;
  * This class should not be altered for the Madder controller
  */
 
-namespace MadderGames{
-    [InputControlLayout(displayName = "MadderController", stateType = typeof(MadderControllerState))]
-    public class MadderController : InputDevice
+
+[InputControlLayout(displayName = "MadderController", stateType = typeof(MadderControllerState))]
+public class MadderController : InputDevice
+{
+    // Define controls
+
+    public Vector2Control joystick { get; private set; }
+    // [InputControl(layout = "Button")]
+    public ButtonControl triangleButton { get; private set; }
+    // [InputControl(layout = "Button")]
+    public ButtonControl circleButton { get; private set; }
+    // [InputControl(layout = "Button")]
+    public ButtonControl plusButton { get; private set; }
+
+    protected override void FinishSetup()
     {
-        // Define controls
+        joystick = GetChildControl<Vector2Control>("joystick");
+        triangleButton = GetChildControl<ButtonControl>("triangle");
+        circleButton = GetChildControl<ButtonControl>("circle");
+        plusButton = GetChildControl<ButtonControl>("plus");
 
-        public Vector2Control joystick { get; private set; }
-        // [InputControl(layout = "Button")]
-        public ButtonControl triangleButton { get; private set; }
-        // [InputControl(layout = "Button")]
-        public ButtonControl circleButton { get; private set; }
-        // [InputControl(layout = "Button")]
-        public ButtonControl plusButton { get; private set; }
+        base.FinishSetup();
+    }
 
-        protected override void FinishSetup()
-        {
-            joystick = GetChildControl<Vector2Control>("joystick");
-            triangleButton = GetChildControl<ButtonControl>("triangle");
-            circleButton = GetChildControl<ButtonControl>("circle");
-            plusButton = GetChildControl<ButtonControl>("plus");
+    public static MadderController current { get; private set; }
 
-            base.FinishSetup();
-        }
+    protected override void OnAdded()
+    {
+        if (current == null)
+            current = this;
+    }
 
-        public static MadderController current { get; private set; }
-
-        protected override void OnAdded()
-        {
-            if (current == null)
-                current = this;
-        }
-
-        protected override void OnRemoved()
-        {
-            if (current == this)
-                current = null;
-        }
+    protected override void OnRemoved()
+    {
+        if (current == this)
+            current = null;
     }
 }
