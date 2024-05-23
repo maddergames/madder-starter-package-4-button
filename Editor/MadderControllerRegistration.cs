@@ -7,9 +7,9 @@ using UnityEngine.InputSystem;
 [UnityEditor.InitializeOnLoad]
 #endif
 
-public static class MadderPackageInitializer
+public static class MadderControllerRegistration
 {
-    static MadderPackageInitializer()
+    static MadderControllerRegistration()
     {
         // Register the MadderController layout with the InputSystem
         InputSystem.RegisterLayout<MadderController>();
