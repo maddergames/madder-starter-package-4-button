@@ -1,9 +1,0 @@
-{
-	"name": "MadderGames.Editor",
-    "references": [ 
-        "MadderGames.MadderController" 
-    ],
-    "includePlatforms": [
-        "Editor"
-    ]
-}
