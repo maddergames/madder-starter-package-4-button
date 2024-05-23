@@ -4,40 +4,48 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.InputSystem.Layouts;
 
-[InputControlLayout(displayName = "MadderController", stateType = typeof(MadderControllerState))]
-public class MadderController : InputDevice
-{
-    // Define controls
+/*
+ * Madder class: MadderController
+ * This class is used to define the Madder Controller for the Unity Input System
+ * This class should not be altered for the Madder controller
+ */
 
-    public Vector2Control joystick { get; private set; }
-    // [InputControl(layout = "Button")]
-    public ButtonControl triangleButton { get; private set; }
-    // [InputControl(layout = "Button")]
-    public ButtonControl circleButton { get; private set; }
-    // [InputControl(layout = "Button")]
-    public ButtonControl plusButton { get; private set; }
-
-    protected override void FinishSetup()
+namespace MadderGames{
+    [InputControlLayout(displayName = "MadderController", stateType = typeof(MadderControllerState))]
+    public class MadderController : InputDevice
     {
-        joystick = GetChildControl<Vector2Control>("joystick");
-        triangleButton = GetChildControl<ButtonControl>("triangle");
-        circleButton = GetChildControl<ButtonControl>("circle");
-        plusButton = GetChildControl<ButtonControl>("plus");
+        // Define controls
 
-        base.FinishSetup();
-    }
+        public Vector2Control joystick { get; private set; }
+        // [InputControl(layout = "Button")]
+        public ButtonControl triangleButton { get; private set; }
+        // [InputControl(layout = "Button")]
+        public ButtonControl circleButton { get; private set; }
+        // [InputControl(layout = "Button")]
+        public ButtonControl plusButton { get; private set; }
 
-    public static MadderController current { get; private set; }
+        protected override void FinishSetup()
+        {
+            joystick = GetChildControl<Vector2Control>("joystick");
+            triangleButton = GetChildControl<ButtonControl>("triangle");
+            circleButton = GetChildControl<ButtonControl>("circle");
+            plusButton = GetChildControl<ButtonControl>("plus");
 
-    protected override void OnAdded()
-    {
-        if (current == null)
-            current = this;
-    }
+            base.FinishSetup();
+        }
 
-    protected override void OnRemoved()
-    {
-        if (current == this)
-            current = null;
+        public static MadderController current { get; private set; }
+
+        protected override void OnAdded()
+        {
+            if (current == null)
+                current = this;
+        }
+
+        protected override void OnRemoved()
+        {
+            if (current == this)
+                current = null;
+        }
     }
 }
