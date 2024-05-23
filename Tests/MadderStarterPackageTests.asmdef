@@ -1,7 +1,9 @@
 {
     "name": "MadderStarterPackageTests",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "GUID:673164759288c446a90ba5c5e2ad9ec3"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
