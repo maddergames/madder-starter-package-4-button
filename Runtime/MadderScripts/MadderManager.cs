@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 using System.Runtime.InteropServices;
 
 /**
-* MadderManager
+* Madder class: MadderManager
 * This class is used to interface between the WebGL build and the Unity game.
 * This class is a singleton so it can be used across scenes.
 * This class interacts with the MadderControllerManager to create and manage Madder controllers.
