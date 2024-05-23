@@ -1,0 +1,6 @@
+{
+	"name": "MadderGames.MadderControllerRegistration",
+    "references": [ 
+        "MadderGames.MadderController" 
+    ],
+}
