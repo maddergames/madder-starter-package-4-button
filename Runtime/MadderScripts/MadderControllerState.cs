@@ -8,21 +8,25 @@ using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.InputSystem.Utilities;
 using UnityEngine.InputSystem.Layouts;
 using UnityEngine;
-[System.Serializable]
-public struct MadderControllerState : IInputStateTypeInfo
+
+namespace MadderGames
 {
-    public static FourCC Format => new FourCC('M', 'A', 'D', 'R');
-    public string name;
-    [InputControl(name = "joystick", layout = "Vector2")]
-    public Vector2 joystick;
+    [System.Serializable]
+    public struct MadderControllerState : IInputStateTypeInfo
+    {
+        public static FourCC Format => new FourCC('M', 'A', 'D', 'R');
+        public string name;
+        [InputControl(name = "joystick", layout = "Vector2")]
+        public Vector2 joystick;
 
-    [InputControl(name = "circle", layout = "Button")]
-    public bool circle;
+        [InputControl(name = "circle", layout = "Button")]
+        public bool circle;
 
-    [InputControl(name = "triangle", layout = "Button")]
-    public bool triangle;
+        [InputControl(name = "triangle", layout = "Button")]
+        public bool triangle;
 
-    [InputControl(name = "plus", layout = "Button")]
-    public bool plus;
-    public FourCC format => Format;
+        [InputControl(name = "plus", layout = "Button")]
+        public bool plus;
+        public FourCC format => Format;
+    }
 }

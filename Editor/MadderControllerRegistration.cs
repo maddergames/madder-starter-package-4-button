@@ -4,15 +4,18 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using MadderGames;
 
-#if UNITY_EDITOR
-[UnityEditor.InitializeOnLoad]
-#endif
-
-public static class MadderControllerRegistration
+namespace MadderGames.Editor
 {
-    static MadderControllerRegistration()
+    #if UNITY_EDITOR
+    [UnityEditor.InitializeOnLoad]
+    #endif
+
+    public static class MadderControllerRegistration
     {
-        // Register the MadderController layout with the InputSystem
-        InputSystem.RegisterLayout<MadderController>();
+        static MadderControllerRegistration()
+        {
+            // Register the MadderController layout with the InputSystem
+            InputSystem.RegisterLayout<MadderController>();
+        }
     }
 }
