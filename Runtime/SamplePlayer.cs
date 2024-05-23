@@ -7,7 +7,7 @@ public class SamplePlayer : MonoBehaviour
 {
     private PlayerInput playerInput;
     private Vector2 move;
-    private bool dash;
+    private bool dash = false;
     private InputAction moveAction;
     private InputAction dashAction;
     private SpriteRenderer spriteRenderer;
@@ -15,21 +15,19 @@ public class SamplePlayer : MonoBehaviour
     private float speed;
 
 
-
     void Start()
     {
-        if (transform.parent != null)
-        {
-            spriteRenderer = transform.parent.gameObject.AddComponent<SpriteRenderer>();
-            spriteRenderer.sprite = Resources.Load<Sprite>("Sprites/SamplePlayer");
-        }
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
-
     void Update()
     {
         move = moveAction.ReadValue<Vector2>();
         dash = dashAction.IsPressed();
-
+        if (moveAction == null)
+        {
+            Debug.Log("MoveAction is null");
+        }
+        Debug.Log("MoveAction: " + moveAction.ReadValue<Vector2>());
     }
 
     void FixedUpdate()
@@ -39,6 +37,7 @@ public class SamplePlayer : MonoBehaviour
 
     public void Initialize(PlayerInput playerInput)
     {
+
         this.playerInput = playerInput;
         moveAction = playerInput.actions["Move"];
         dashAction = playerInput.actions["Dash"];
@@ -47,8 +46,10 @@ public class SamplePlayer : MonoBehaviour
         dashAction.Enable();
     }
 
+
     void Move()
     {
+
         if (dash)
         {
             speed = 13.0f;
