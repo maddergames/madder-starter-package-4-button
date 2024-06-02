@@ -17,6 +17,7 @@ public class SampleGameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(this);
         madderManager = FindObjectOfType<MadderManager>();
+        madderManager.ShowCode();
     }
 
     // Update is called once per frame

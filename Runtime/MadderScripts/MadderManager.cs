@@ -28,6 +28,10 @@ public class MadderManager : MonoBehaviour
     private static extern void VibrateAllPlayerControllers();
     [DllImport("__Internal")]
     private static extern void UpdateStats(string userName, string stats);
+    [DllImport("__Internal")]
+    private static extern void ShowCode();
+    [DllImport("__Internal")]
+    private static extern void HideCode();
 
     /**
     * Awake
