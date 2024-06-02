@@ -19,3 +19,15 @@ mergeInto(LibraryManager.library, {
     );
   },
 });
+
+mergeInto(LibraryManager.library, {
+  ShowCode: function () {
+    window.dispatchReactUnityEvent("ShowCode");
+  },
+});
+
+mergeInto(LibraryManager.library, {
+  HideCode: function () {
+    window.dispatchReactUnityEvent("HideCode");
+  },
+});
