@@ -15,7 +15,11 @@ public class SampleGameManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(this);
-        MadderManager.Instance.ShowCode();
+        //only call the following if not in the editor
+#if UNITY_WEBGL && !UNITY_EDITOR
+        MadderMessager.ShowCode();
+#endif
+
     }
 
     // Update is called once per frame
@@ -23,6 +27,7 @@ public class SampleGameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.J))
         {
+
             Debug.Log("Testing Madder Controller");
             madderControllerTest = FindObjectOfType<MadderControllerTest>();
             madderControllerTest.TestMadderInput();
