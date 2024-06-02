@@ -23,15 +23,15 @@ public class MadderManager : MonoBehaviour
     * These functions should be conditionally called based on if this is inside a WebGL build, not the editor
     */
     [DllImport("__Internal")]
-    private static extern void VibratePlayerController(string gamername);
+    public static extern void VibratePlayerController(string gamername);
     [DllImport("__Internal")]
-    private static extern void VibrateAllPlayerControllers();
+    public static extern void VibrateAllPlayerControllers();
     [DllImport("__Internal")]
-    private static extern void UpdateStats(string userName, string stats);
+    public static extern void UpdateStats(string userName, string stats);
     [DllImport("__Internal")]
-    private static extern void ShowCode();
+    public static extern void ShowCode();
     [DllImport("__Internal")]
-    private static extern void HideCode();
+    public static extern void HideCode();
 
     /**
     * Awake
