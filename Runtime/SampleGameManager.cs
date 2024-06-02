@@ -5,7 +5,6 @@ using UnityEngine;
 public class SampleGameManager : MonoBehaviour
 {
     private static SampleGameManager Instance { get; set; }
-    private MadderManager madderManager;
     private MadderControllerTest madderControllerTest;
     private void Awake()
     {
@@ -16,8 +15,7 @@ public class SampleGameManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(this);
-        madderManager = FindObjectOfType<MadderManager>();
-        madderManager.ShowCode();
+        MadderManager.Instance.ShowCode();
     }
 
     // Update is called once per frame
