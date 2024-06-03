@@ -51,7 +51,7 @@ public class MadderManager : MonoBehaviour
         MadderPlayer madderPlayer = JsonUtility.FromJson<MadderPlayer>(jsonRegisterMadderController);
 
         // Create a new input device for the player
-        madderControllerManager.CreateController(madderPlayer.gamername);
+        madderControllerManager.CreateController(madderPlayer.name);
 
         //Trigger events listening for OnRegisterMadderController, for example to spawn a playerObject
         onRegisterMadderController?.Invoke(madderPlayer);

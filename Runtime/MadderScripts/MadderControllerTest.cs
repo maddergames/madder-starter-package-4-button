@@ -26,7 +26,7 @@ public class MadderControllerTest : MonoBehaviour
             randomName += chars[Random.Range(0, chars.Length)];
         }
         MadderPlayer madderPlayer = new MadderPlayer();
-        madderPlayer.gamername = randomName;
+        madderPlayer.name = randomName;
         string madderPlayerJson = JsonUtility.ToJson(madderPlayer);
         madderManager.RegisterMadderController(madderPlayerJson);
         //Create a new controller state that follows MadderControllerState class
