@@ -19,13 +19,13 @@ public struct MadderControllerState : IInputStateTypeInfo
     public Vector2 joystick;
 
     [InputControl(name = "circle", layout = "Button")]
-    public bool circle;
+    public float circle;
 
     [InputControl(name = "triangle", layout = "Button")]
-    public bool triangle;
+    public float triangle;
 
     [InputControl(name = "plus", layout = "Button")]
-    public bool plus;
+    public float plus;
     public FourCC format => Format;
 }
 
