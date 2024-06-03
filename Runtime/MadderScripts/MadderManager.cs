@@ -97,7 +97,6 @@ public class MadderManager : MonoBehaviour
     {
         //Deserialize the controller state and store it in a MadderControllerState object
         MadderControllerState controllerState = JsonUtility.FromJson<MadderControllerState>(jsonControllerState);
-
         // Retrieve the corresponding input device. The controller name is used as the device name, and is always unique
         MadderController controller = madderControllerManager.GetController(controllerState.name);
         if (controller == null)
@@ -107,6 +106,7 @@ public class MadderManager : MonoBehaviour
         //Update the input device with the received data
         InputSystem.QueueStateEvent(controller, controllerState);
         InputSystem.Update();
+        Debug.Log($"Controller State: Joystick: {controllerState.joystick}, Circle: {controllerState.circle}, Triangle: {controllerState.triangle}, Plus: {controllerState.plus}")
 
         //Trigger events listening for OnUpdateMadderControllerState, for example to move a playerObject
         onUpdateMadderControllerState?.Invoke(controllerState.name, controllerState);
