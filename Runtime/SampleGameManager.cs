@@ -15,11 +15,16 @@ public class SampleGameManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(this);
+
+
+    }
+
+    void Start()
+    {
         //only call the following if not in the editor
 #if UNITY_WEBGL && !UNITY_EDITOR
         MadderMessager.ShowCode();
 #endif
-
     }
 
     // Update is called once per frame

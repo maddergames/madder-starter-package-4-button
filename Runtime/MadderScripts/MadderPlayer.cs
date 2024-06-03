@@ -9,7 +9,7 @@
 using System.Collections.Generic;
 public class MadderPlayer
 {
-    public string gamername;
+    public string name;
 
     public Dictionary<string, IMadderStat> stats;
 

@@ -24,7 +24,7 @@ public class SamplePlayerManager : MonoBehaviour
 
     private void OnRegisterMadderController(MadderPlayer madderPlayer)
     {
-        RegisterPlayer(madderPlayer.gamername);
+        RegisterPlayer(madderPlayer.name);
     }
 
     public void RegisterPlayer(string gamername)

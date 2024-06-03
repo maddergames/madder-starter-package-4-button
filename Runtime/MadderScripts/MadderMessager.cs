@@ -16,7 +16,7 @@ public static class MadderMessager
     * VibratePlayerController(string gamername) vibrates a specific controller
     * VibrateAllPlayerControllers() vibrates all controllers
     * UpdateStats(string userName, string stats)
-    * ShowCode() shows the room code
+    * ShowCode() shows the room code (must be called on Start(), not Awake())
     * HideCode() hides the room code
     * These functions should be conditionally called based on if this is inside a WebGL build, not the editor
     */
