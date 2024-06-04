@@ -1,6 +1,6 @@
 /*
     * Madder class: MadderControllerState
-    * This class is used to serialize the data sent to the PlayerControllerState function
+    * This class is used to serialize the data sent to the UpdateMadderControllerState function
     * This class defines the layout of the Madder Controller for the Unity Input System
     * This class should not be altered for the Madder controller
     */
