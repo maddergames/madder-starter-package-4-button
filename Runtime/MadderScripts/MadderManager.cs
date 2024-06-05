@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 /**
  * Madder class: MadderManager
  * This class is used to interface between the WebGL build and the Unity game.
- * This class is a singleton so it can be used across scenes.
+ * This class is a static class so it can be used across scenes.
  * This class interacts with the MadderControllerManager to create and manage Madder controllers.
  * This class should not be altered.
  */
@@ -47,7 +47,7 @@ public static class MadderManager
     /**
      * UnregisterMadderController
      * This function is used to unregister a Madder controller from the MadderControllerManager.
-     *This function has an attached event (OnUnregisterMadderController) that can be listened to by other scripts.
+     * This function has an attached event (OnUnregisterMadderController) that can be listened to by other scripts.
      * @param string gamername
      */
     public delegate void OnUnregisterMadderController(string gamername);

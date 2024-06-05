@@ -4,7 +4,7 @@ using System.Collections.Generic;
 /**
  * MadderControllerManager
  * This class is used to manage the Madder controllers.
- * This class is a singleton so it can be used across scenes.
+ * This class is static so it can be used across scenes.
  * This class should not be altered.
  */
 public static class MadderControllerManager
