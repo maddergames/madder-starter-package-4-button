@@ -1,41 +1,16 @@
-using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
 
 /**
  * MadderControllerManager
  * This class is used to manage the Madder controllers.
- * This class is a singleton so it can be used across scenes.
+ * This class is static so it can be used across scenes.
  * This class should not be altered.
  */
-public class MadderControllerManager : MonoBehaviour
+public static class MadderControllerManager
 {
 
-    private Dictionary<string, MadderController> controllers = new Dictionary<string, MadderController>();
-    private static MadderControllerManager instance;
-
-    /**
-     * Awake
-     * This function is called when the object becomes enabled and active.
-     * This function is used to initialize the singleton instance and register the MadderController layout with the InputSystem.
-     */
-    private void Awake()
-    {
-        //Singleton pattern
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-            InputSystem.RegisterLayout<MadderController>();
-
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
-    }
-
+    private static Dictionary<string, MadderController> controllers = new Dictionary<string, MadderController>();
     /**
      * CreateController
      * This function is used to create a new Madder controller.
@@ -43,7 +18,7 @@ public class MadderControllerManager : MonoBehaviour
      * @param string gamername
      * @return MadderController
      */
-    public MadderController CreateController(string gamername)
+    public static MadderController CreateController(string gamername)
     {
         var device = InputSystem.AddDevice<MadderController>();
 
@@ -51,14 +26,13 @@ public class MadderControllerManager : MonoBehaviour
         return device;
     }
 
-
     /**
      * GetController
      * This function is used to get a Madder controller.
      * @param string gamername
      * @return MadderController
      */
-    public MadderController GetController(string gamername)
+    public static MadderController GetController(string gamername)
     {
         controllers.TryGetValue(gamername, out var device);
         return device;
@@ -70,7 +44,7 @@ public class MadderControllerManager : MonoBehaviour
      * If using the InputSystem, this function will remove the MadderController input device from the InputSystem.
      * @param string gamername
      */
-    public void RemoveController(string gamername)
+    public static void RemoveController(string gamername)
     {
         if (controllers.TryGetValue(gamername, out var device))
         {
@@ -79,18 +53,5 @@ public class MadderControllerManager : MonoBehaviour
         }
     }
 
-    /**
-     * OnDestroy
-     * This function is called when the object is destroyed.
-     * This function is used to remove all Madder controllers from the InputSystem.
-     */
-    private void OnDestroy()
-    {
-        foreach (var controller in controllers.Values)
-        {
-            InputSystem.RemoveDevice(controller);
-        }
-        controllers.Clear();
-    }
 }
 

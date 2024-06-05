@@ -1,6 +1,6 @@
 {
   "name": "com.maddergames.madderstarterpack",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "displayName": "Madder Starter Pack",
   "description": "All the essentials to get started with integrating with the Madder console",
   "unity": "2020.3",
