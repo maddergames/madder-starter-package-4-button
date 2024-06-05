@@ -1,3 +1,4 @@
+
 /*
     * Madder class: MadderControllerState
     * This class is used to serialize the data sent to the PlayerControllerState function

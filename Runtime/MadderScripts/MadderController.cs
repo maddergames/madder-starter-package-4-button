@@ -4,10 +4,10 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.InputSystem.Layouts;
 
-/*
+/**
  * Madder class: MadderController
- * This class is used to define the Madder Controller for the Unity Input System
- * This class should not be altered for the Madder controller
+ * This class is used to define the Madder Controller for the Unity Input System.
+ * This class should not be altered.
  */
 
 
@@ -17,11 +17,11 @@ public class MadderController : InputDevice
     // Define controls
 
     public Vector2Control joystick { get; private set; }
-    // [InputControl(layout = "Button")]
+
     public ButtonControl triangleButton { get; private set; }
-    // [InputControl(layout = "Button")]
+
     public ButtonControl circleButton { get; private set; }
-    // [InputControl(layout = "Button")]
+
     public ButtonControl plusButton { get; private set; }
 
     protected override void FinishSetup()
