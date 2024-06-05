@@ -31,3 +31,37 @@ mergeInto(LibraryManager.library, {
     window.dispatchReactUnityEvent("HideCode");
   },
 });
+
+mergeInto(LibraryManager.library, {
+  SetHealthCheckFlag: function () {
+    window.dispatchReactUnityEvent("SetHealthCheckFlag");
+  },
+});
+
+mergeInto(LibraryManager.library, {
+  RegisterMadderController: function (jsonRegisterMadderController) {
+    jsonRegisterMadderController = UTF8ToString(jsonRegisterMadderController);
+    window.Unity.call(
+      "MadderManager.RegisterMadderController",
+      jsonRegisterMadderController
+    );
+  },
+});
+
+mergeInto(LibraryManager.library, {
+  UpdateMadderControllerState: function (jsonUpdateMadderControllerState) {
+    jsonUpdateMadderControllerState = UTF8ToString(
+      jsonUpdateMadderControllerState
+    );
+    window.Unity.call(
+      "MadderManager.UpdateMadderControllerState",
+      jsonUpdateMadderControllerState
+    );
+  },
+});
+
+mergeInto(LibraryManager.library, {
+  MadderHealthCheck: function () {
+    window.Unity.call("MadderManager.MadderHealthCheck");
+  },
+});

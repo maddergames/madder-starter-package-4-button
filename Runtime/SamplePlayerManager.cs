@@ -8,14 +8,10 @@ public class SamplePlayerManager : MonoBehaviour
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private InputActionAsset inputActions;
     private Dictionary<string, PlayerInput> playerInputs = new Dictionary<string, PlayerInput>();
-    private MadderManager madderManager;
 
 
     private void Awake()
     {
-        madderManager = FindObjectOfType<MadderManager>();
-
-
         //subscribe to RegisterMadderController event
         MadderManager.onRegisterMadderController += OnRegisterMadderController;
 
@@ -60,13 +56,16 @@ public class SamplePlayerManager : MonoBehaviour
 
     }
 
-    public void UnregisterPlayer(string gamername)
+    private void onUnregisterMadderController(string gamername)
+    {
+        RemovePlayer(gamername);
+    }
+    public void RemovePlayer(string gamername)
     {
         if (playerInputs.TryGetValue(gamername, out var playerInput))
         {
             playerInputs.Remove(gamername);
             Destroy(playerInput.gameObject);
-            madderManager.UnregisterMadderController(gamername);
         }
     }
 

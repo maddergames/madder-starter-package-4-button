@@ -22,12 +22,19 @@ public static class MadderMessager
     */
     [DllImport("__Internal")]
     public static extern void VibratePlayerController(string gamername);
+
     [DllImport("__Internal")]
     public static extern void VibrateAllPlayerControllers();
+
     [DllImport("__Internal")]
     public static extern void UpdateStats(string userName, string stats);
+
     [DllImport("__Internal")]
     public static extern void ShowCode();
+
     [DllImport("__Internal")]
     public static extern void HideCode();
+
+    [DllImport("__Internal")]
+    public static extern void SetHealthCheckFlag();
 }
