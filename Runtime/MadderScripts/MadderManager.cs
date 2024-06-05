@@ -6,13 +6,36 @@ using UnityEngine.InputSystem;
 /**
  * Madder class: MadderManager
  * This class is used to interface between the WebGL build and the Unity game.
- * This class is a static class so it can be used across scenes.
+ * This class is a singleton so it can be used across scenes.
  * This class interacts with the MadderControllerManager to create and manage Madder controllers.
  * This class should not be altered.
  */
 
-public static class MadderManager
+public class MadderManager : MonoBehaviour
 {
+    public static MadderManager Instance { get; private set; }
+    private MadderControllerManager madderControllerManager;
+
+
+
+    /**
+     * Awake
+     * This function is called when the object becomes enabled and active.
+     * This function is used to initialize the singleton instance.
+     */
+    private void Awake()
+    {
+        //Singleton pattern
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(this);
+        madderControllerManager = FindObjectOfType<MadderControllerManager>();
+    }
+
     /**
      * RegisterMadderController
      * This function is used to register a new Madder controller.
@@ -21,13 +44,14 @@ public static class MadderManager
      */
     public delegate void OnRegisterMadderController(MadderPlayer madderPlayer);
     public static event OnRegisterMadderController onRegisterMadderController;
-    public static void RegisterMadderController(string jsonRegisterMadderController)
+
+    public void RegisterMadderController(string jsonRegisterMadderController)
     {
         //Deserialize the MadderPlayer object
         MadderPlayer madderPlayer = JsonUtility.FromJson<MadderPlayer>(jsonRegisterMadderController);
 
         // Create a new input device for the player
-        MadderControllerManager.CreateController(madderPlayer.name);
+        madderControllerManager.CreateController(madderPlayer.name);
 
         //Trigger events listening for OnRegisterMadderController, for example to spawn a playerObject
         onRegisterMadderController?.Invoke(madderPlayer);
@@ -40,23 +64,24 @@ public static class MadderManager
      * @param string gamername
      * @return MadderController
      */
-    public static MadderController GetMadderController(string gamername)
+    public MadderController GetMadderController(string gamername)
     {
-        return MadderControllerManager.GetController(gamername);
+        return madderControllerManager.GetController(gamername);
     }
 
     /**
      * UnregisterMadderController
      * This function is used to unregister a Madder controller from the MadderControllerManager.
-     * This function has an attached event (OnUnregisterMadderController) that can be listened to by other scripts.
+     *This function has an attached event (OnUnregisterMadderController) that can be listened to by other scripts.
      * @param string gamername
      */
     public delegate void OnUnregisterMadderController(string gamername);
     public static event OnUnregisterMadderController onUnregisterMadderController;
-    public static void UnregisterMadderController(string gamername)
+    public void UnregisterMadderController(string gamername)
     {
-        MadderControllerManager.RemoveController(gamername);
+        madderControllerManager.RemoveController(gamername);
     }
+
 
     /**
      * UpdateMadderControllerState
@@ -68,7 +93,7 @@ public static class MadderManager
      */
     public delegate void OnUpdateMadderControllerState(string gamername, MadderControllerState controllerState);
     public static event OnUpdateMadderControllerState onUpdateMadderControllerState;
-    public static void UpdateMadderControllerState(string jsonControllerState)
+    public void UpdateMadderControllerState(string jsonControllerState)
     {
         //turn the booleans in the json string to floats
         jsonControllerState = jsonControllerState.Replace("true", "1");
@@ -76,7 +101,7 @@ public static class MadderManager
         //Deserialize the controller state and store it in a MadderControllerState object
         MadderControllerState controllerState = JsonUtility.FromJson<MadderControllerState>(jsonControllerState);
         // Retrieve the corresponding input device. The controller name is used as the device name, and is always unique
-        MadderController controller = MadderControllerManager.GetController(controllerState.name);
+        MadderController controller = madderControllerManager.GetController(controllerState.name);
         if (controller == null)
         {
             Debug.Log("Controller not found.");
@@ -84,21 +109,26 @@ public static class MadderManager
         //Update the input device with the received data
         InputSystem.QueueStateEvent(controller, controllerState);
         InputSystem.Update();
+        Debug.Log($"Controller State: Joystick: {controllerState.joystick}, Circle: {controllerState.circle}, Triangle: {controllerState.triangle}, Plus: {controllerState.plus}");
 
         //Trigger events listening for OnUpdateMadderControllerState, for example to move a playerObject
         onUpdateMadderControllerState?.Invoke(controllerState.name, controllerState);
+
+
     }
 
+
     /**
-     * MadderHealthCheck
+     * HealthCheck
      * This function is used by WebGL to check for communication with the Madder package.
      * This function should not be altered.
      * @return bool
     */
-    public static bool MadderHealthCheck()
+    public bool HealthCheck()
     {
-        //invoke javascript function to set flag
-        MadderMessager.SetHealthCheckFlag();
         return true;
     }
+
+
+
 }
