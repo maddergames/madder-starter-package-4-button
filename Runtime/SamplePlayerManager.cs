@@ -49,15 +49,6 @@ public class SamplePlayerManager : MonoBehaviour
         InputActionAsset clonedinputActions = Instantiate(inputActions);
         playerInput.actions = clonedinputActions;
 
-
-
-        // Get the MadderController for the player
-        MadderController madderController = madderManager.GetMadderController(gamername);
-        //Associate the custom controller with the playerObject
-        playerInput.SwitchCurrentControlScheme(madderController);
-        //Print the control scheme
-        Debug.Log("Control Scheme: " + playerInput.currentControlScheme);
-
         //Store the PlayerInput instance
         playerInputs[gamername] = playerInput;
 
