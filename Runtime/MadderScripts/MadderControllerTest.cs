@@ -9,6 +9,12 @@ using UnityEngine;
     */
 public class MadderControllerTest : MonoBehaviour
 {
+    public MadderManager madderManager;
+
+    void Start()
+    {
+        madderManager = FindObjectOfType<MadderManager>();
+    }
 
     public void TestMadderInput()
     {
@@ -22,7 +28,7 @@ public class MadderControllerTest : MonoBehaviour
         MadderPlayer madderPlayer = new MadderPlayer();
         madderPlayer.name = randomName;
         string madderPlayerJson = JsonUtility.ToJson(madderPlayer);
-        MadderManager.RegisterMadderController(madderPlayerJson);
+        madderManager.RegisterMadderController(madderPlayerJson);
         //Create a new controller state that follows MadderControllerState class
         //Wait for 5 seconds
         //Send a new controller state with different values
@@ -36,13 +42,13 @@ public class MadderControllerTest : MonoBehaviour
         float x = Random.Range(-1f, 1f);
         float y = Random.Range(-1f, 1f);
         string jsonControllerState = "{\"name\":\"" + randomName + "\",\"joystick\":{\"x\":" + x + ",\"y\":" + y + "},\"circle\":false,\"triangle\":false,\"plus\":false}";
-        MadderManager.UpdateMadderControllerState(jsonControllerState);
+        madderManager.UpdateMadderControllerState(jsonControllerState);
         //wait for 5 seconds
         yield return new WaitForSeconds(5);
 
         //send a new controller state with different values
         jsonControllerState = "{\"name\":\"" + randomName + "\",\"joystick\":{\"x\":0,\"y\":0},\"circle\":false,\"triangle\":false,\"plus\":false}";
-        MadderManager.UpdateMadderControllerState(jsonControllerState);
+        madderManager.UpdateMadderControllerState(jsonControllerState);
 
     }
 }
