@@ -49,7 +49,7 @@ public class SamplePlayer : MonoBehaviour
 
     void Move()
     {
-
+        move = move.normalized;
         if (dash)
         {
             speed = 13.0f;
