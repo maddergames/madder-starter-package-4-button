@@ -55,9 +55,11 @@ public class SamplePlayerManager : MonoBehaviour
         //Initialize the player controller
         SamplePlayer playerController = player.GetComponent<SamplePlayer>();
         playerController.Initialize(playerInput);
+    }
 
-
-
+    onUnregisterMadderController(MadderPlayer madderPlayer)
+    {
+        UnregisterPlayer(madderPlayer.name);
     }
 
     public void UnregisterPlayer(string gamername)
@@ -66,7 +68,6 @@ public class SamplePlayerManager : MonoBehaviour
         {
             playerInputs.Remove(gamername);
             Destroy(playerInput.gameObject);
-            madderManager.UnregisterMadderController(gamername);
         }
     }
 
