@@ -14,9 +14,6 @@ using UnityEngine.InputSystem;
 public class MadderManager : MonoBehaviour
 {
     public static MadderManager Instance { get; private set; }
-    private MadderControllerManager madderControllerManager;
-
-
 
     /**
      * Awake
@@ -33,7 +30,6 @@ public class MadderManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(this);
-        madderControllerManager = FindObjectOfType<MadderControllerManager>();
     }
 
     /**
@@ -66,7 +62,7 @@ public class MadderManager : MonoBehaviour
      */
     public MadderController GetMadderController(string gamername)
     {
-        return madderControllerManager.GetController(gamername);
+        return MadderControllerManager.Instance.GetController(gamername);
     }
 
     /**
@@ -95,26 +91,19 @@ public class MadderManager : MonoBehaviour
     public static event OnUpdateMadderControllerState onUpdateMadderControllerState;
     public void UpdateMadderControllerState(string jsonControllerState)
     {
-        //turn the booleans in the json string to floats
+        //Turn the booleans in the json string to floats for the Unity Input System
         jsonControllerState = jsonControllerState.Replace("true", "1");
         jsonControllerState = jsonControllerState.Replace("false", "0");
         //Deserialize the controller state and store it in a MadderControllerState object
         MadderControllerState controllerState = JsonUtility.FromJson<MadderControllerState>(jsonControllerState);
         // Retrieve the corresponding input device. The controller name is used as the device name, and is always unique
         MadderController controller = madderControllerManager.GetController(controllerState.name);
-        if (controller == null)
-        {
-            Debug.Log("Controller not found.");
-        }
+
         //Update the input device with the received data
         InputSystem.QueueStateEvent(controller, controllerState);
-        InputSystem.Update();
-        Debug.Log($"Controller State: Joystick: {controllerState.joystick}, Circle: {controllerState.circle}, Triangle: {controllerState.triangle}, Plus: {controllerState.plus}");
 
         //Trigger events listening for OnUpdateMadderControllerState, for example to move a playerObject
         onUpdateMadderControllerState?.Invoke(controllerState.name, controllerState);
-
-
     }
 
 

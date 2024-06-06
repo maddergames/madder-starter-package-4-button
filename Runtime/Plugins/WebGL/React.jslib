@@ -11,11 +11,10 @@ mergeInto(LibraryManager.library, {
 });
 
 mergeInto(LibraryManager.library, {
-  UpdateStats: function (userName, stats) {
+  UpdateStats: function (madderPlayer) {
     window.dispatchReactUnityEvent(
-      "UpdateStats",
-      UTF8ToString(userName),
-      UTF8ToString(stats)
+      "UpdateMadderPlayerStats",
+      UTF8ToString(madderPlayer)
     );
   },
 });
