@@ -7,6 +7,8 @@
  * This class should not be altered.
  */
 using System.Collections.Generic;
+
+[System.Serializable]
 public class MadderPlayer
 {
     public string name;

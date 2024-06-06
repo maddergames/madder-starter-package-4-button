@@ -25,7 +25,7 @@ public static class MadderMessager
     [DllImport("__Internal")]
     public static extern void VibrateAllPlayerControllers();
     [DllImport("__Internal")]
-    public static extern void UpdateStats(string userName, string stats);
+    public static extern void UpdateMadderPlayerStats(string madderPlayer);
     [DllImport("__Internal")]
     public static extern void ShowCode();
     [DllImport("__Internal")]
