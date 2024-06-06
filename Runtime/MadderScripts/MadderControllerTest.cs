@@ -35,13 +35,13 @@ public class MadderControllerTest : MonoBehaviour
         float x = Random.Range(-1f, 1f);
         float y = Random.Range(-1f, 1f);
         string jsonControllerState = "{\"name\":\"" + randomName + "\",\"joystick\":{\"x\":" + x + ",\"y\":" + y + "},\"circle\":false,\"triangle\":false,\"plus\":false}";
-        madderManager.UpdateMadderControllerState(jsonControllerState);
+        MadderManager.Instance.UpdateMadderControllerState(jsonControllerState);
         //wait for 5 seconds
         yield return new WaitForSeconds(5);
 
         //send a new controller state with different values
         jsonControllerState = "{\"name\":\"" + randomName + "\",\"joystick\":{\"x\":0,\"y\":0},\"circle\":false,\"triangle\":false,\"plus\":false}";
-        madderManager.UpdateMadderControllerState(jsonControllerState);
+        MadderManager.Instance.UpdateMadderControllerState(jsonControllerState);
 
     }
 }
