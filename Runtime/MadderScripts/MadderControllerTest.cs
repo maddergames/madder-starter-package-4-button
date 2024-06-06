@@ -9,13 +9,6 @@ using UnityEngine;
     */
 public class MadderControllerTest : MonoBehaviour
 {
-    public MadderManager madderManager;
-
-    void Start()
-    {
-        madderManager = FindObjectOfType<MadderManager>();
-    }
-
     public void TestMadderInput()
     {
         //Register a new madder controller with a random name
@@ -28,7 +21,7 @@ public class MadderControllerTest : MonoBehaviour
         MadderPlayer madderPlayer = new MadderPlayer();
         madderPlayer.name = randomName;
         string madderPlayerJson = JsonUtility.ToJson(madderPlayer);
-        madderManager.RegisterMadderController(madderPlayerJson);
+        MadderManager.Instance.RegisterMadderController(madderPlayerJson);
         //Create a new controller state that follows MadderControllerState class
         //Wait for 5 seconds
         //Send a new controller state with different values
