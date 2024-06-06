@@ -47,7 +47,7 @@ public class MadderManager : MonoBehaviour
         MadderPlayer madderPlayer = JsonUtility.FromJson<MadderPlayer>(jsonRegisterMadderController);
 
         // Create a new input device for the player
-        madderControllerManager.CreateController(madderPlayer.name);
+        MadderControllerManager.Instance.CreateController(madderPlayer.name);
 
         //Trigger events listening for OnRegisterMadderController, for example to spawn a playerObject
         onRegisterMadderController?.Invoke(madderPlayer);
@@ -75,7 +75,7 @@ public class MadderManager : MonoBehaviour
     public static event OnUnregisterMadderController onUnregisterMadderController;
     public void UnregisterMadderController(string gamername)
     {
-        madderControllerManager.RemoveController(gamername);
+        MadderControllerManager.Instance.RemoveController(gamername);
     }
 
 
@@ -97,7 +97,7 @@ public class MadderManager : MonoBehaviour
         //Deserialize the controller state and store it in a MadderControllerState object
         MadderControllerState controllerState = JsonUtility.FromJson<MadderControllerState>(jsonControllerState);
         // Retrieve the corresponding input device. The controller name is used as the device name, and is always unique
-        MadderController controller = madderControllerManager.GetController(controllerState.name);
+        MadderController controller = MadderControllerManager.Instance.GetController(controllerState.name);
 
         //Update the input device with the received data
         InputSystem.QueueStateEvent(controller, controllerState);

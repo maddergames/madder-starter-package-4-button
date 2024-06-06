@@ -12,7 +12,7 @@ public class MadderControllerManager : MonoBehaviour
 {
 
     private Dictionary<string, MadderController> controllers = new Dictionary<string, MadderController>();
-    private static MadderControllerManager instance;
+    public static MadderControllerManager Instance;
 
     /**
      * Awake
@@ -22,18 +22,13 @@ public class MadderControllerManager : MonoBehaviour
     private void Awake()
     {
         //Singleton pattern
-        if (instance == null)
+        if (Instance != null && Instance != this)
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-            InputSystem.RegisterLayout<MadderController>();
-
+            Destroy(this.gameObject);
+            return;
         }
-        else
-        {
-            Destroy(gameObject);
-        }
-
+        Instance = this;
+        DontDestroyOnLoad(this);
     }
 
     /**
