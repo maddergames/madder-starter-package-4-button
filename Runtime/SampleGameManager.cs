@@ -15,8 +15,6 @@ public class SampleGameManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(this);
-
-
     }
 
     void Start()
