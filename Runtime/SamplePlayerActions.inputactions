@@ -26,17 +26,6 @@
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "13050a7a-18b6-409d-924d-68056f8d3af7",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "2D Vector",
                     "id": "32fb6db3-2b61-4194-ac40-571c1a02d171",
                     "path": "2DVector",
@@ -50,7 +39,7 @@
                 {
                     "name": "up",
                     "id": "3af27b7a-c346-417b-a427-976d5cbf1c85",
-                    "path": "",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -61,7 +50,7 @@
                 {
                     "name": "down",
                     "id": "fc9c7d07-5cc6-4807-8992-0111f3643e53",
-                    "path": "",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -72,7 +61,7 @@
                 {
                     "name": "left",
                     "id": "bca8daa1-63a9-44f6-8a6a-91304a27a166",
-                    "path": "",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -83,7 +72,7 @@
                 {
                     "name": "right",
                     "id": "d417d5d5-1c64-467d-b1e6-d4ee7ae95bd6",
-                    "path": "",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -106,6 +95,17 @@
                     "name": "",
                     "id": "773706b8-dd74-4f7a-b699-6abf7bbbf494",
                     "path": "<MadderController>/circle",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a8849a3c-f37b-4807-a20f-a2375d046e07",
+                    "path": "<Keyboard>/shift",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
