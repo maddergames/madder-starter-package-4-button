@@ -53,7 +53,7 @@ public class SamplePlayerManager : MonoBehaviour
         playerController.Initialize(playerInput);
     }
 
-    onUnregisterMadderController(MadderPlayer madderPlayer)
+    private void onUnregisterMadderController(MadderPlayer madderPlayer)
     {
         UnregisterPlayer(madderPlayer.name);
     }
