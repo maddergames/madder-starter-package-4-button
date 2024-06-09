@@ -11,7 +11,7 @@ mergeInto(LibraryManager.library, {
 });
 
 mergeInto(LibraryManager.library, {
-  UpdateStats: function (madderPlayer) {
+  UpdateMadderPlayerStats: function (madderPlayer) {
     window.dispatchReactUnityEvent(
       "UpdateMadderPlayerStats",
       UTF8ToString(madderPlayer)
