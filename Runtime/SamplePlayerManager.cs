@@ -14,7 +14,6 @@ public class SamplePlayerManager : MonoBehaviour
     {
         //subscribe to RegisterMadderController event
         MadderManager.onRegisterMadderController += OnRegisterMadderController;
-
     }
 
 
