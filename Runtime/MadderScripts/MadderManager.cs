@@ -76,6 +76,7 @@ public class MadderManager : MonoBehaviour
     public void UnregisterMadderController(string gamername)
     {
         MadderControllerManager.Instance.RemoveController(gamername);
+        onUnregisterMadderController?.Invoke(gamername);
     }
 
 
