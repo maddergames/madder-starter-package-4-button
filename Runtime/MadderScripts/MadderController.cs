@@ -22,13 +22,17 @@ public class MadderController : InputDevice
 
     public ButtonControl circleButton { get; private set; }
 
+    public ButtonControl squareButton { get; private set; }
+
     public ButtonControl plusButton { get; private set; }
+
 
     protected override void FinishSetup()
     {
         joystick = GetChildControl<Vector2Control>("joystick");
         triangleButton = GetChildControl<ButtonControl>("triangle");
         circleButton = GetChildControl<ButtonControl>("circle");
+        squareButton = GetChildControl<ButtonControl>("square");
         plusButton = GetChildControl<ButtonControl>("plus");
 
         base.FinishSetup();
