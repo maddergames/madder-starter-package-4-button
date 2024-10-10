@@ -28,6 +28,9 @@ public struct MadderControllerState : IInputStateTypeInfo
     [InputControl(name = "square", layout = "Button")]
     public float square;
 
+    [InputControl(name = "m", layout = "Button")]
+    public float m;
+
     [InputControl(name = "plus", layout = "Button")]
     public float plus;
     public FourCC format => Format;

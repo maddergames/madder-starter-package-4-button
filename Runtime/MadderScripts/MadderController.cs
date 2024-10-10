@@ -24,6 +24,8 @@ public class MadderController : InputDevice
 
     public ButtonControl squareButton { get; private set; }
 
+    public ButtonControl mButton { get; private set; }
+
     public ButtonControl plusButton { get; private set; }
 
 
@@ -33,6 +35,7 @@ public class MadderController : InputDevice
         triangleButton = GetChildControl<ButtonControl>("triangle");
         circleButton = GetChildControl<ButtonControl>("circle");
         squareButton = GetChildControl<ButtonControl>("square");
+        mButton = GetChildControl<ButtonControl>("m");
         plusButton = GetChildControl<ButtonControl>("plus");
 
         base.FinishSetup();
